@@ -1,0 +1,191 @@
+﻿<Window x:Class="KitchenBase.Pages.Stuff"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KitchenBase.Pages"
+        mc:Ignorable="d"
+        Title="Stuff" Height="900" Width="1280" Background="#20202A" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Icon="/KitchenBase;component/Assets/KitchenBase.ico" >
+
+    <Window.Resources>
+        <Storyboard x:Key="sbShowRightMenu" >
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-170,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+        </Storyboard>
+        <Storyboard x:Key="sbHideRightMenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,-170,0" AccelerationRatio=".9" Duration="0:0:1" />
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="30*"></ColumnDefinition>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <ColumnDefinition Width="20*"></ColumnDefinition>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Name="lblEmployee" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6" Content="Информация о персонале" FontFamily="Century Gothic" HorizontalContentAlignment="Center"
+               FontSize="60" Foreground="White">
+        </Label>
+        <StackPanel  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="20" >
+            <UniformGrid Rows="19" Columns="1">
+                <Label Name="lblSurname" Content="Фамилия"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1" >
+                    <TextBox Name="tbSurname" FontSize="24" Text="{Binding SelectedItem.Фамилия,
+                                 ElementName=dgPersonal}"></TextBox>
+                </Border>
+
+                <Label Name="lblName" Content="Имя"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1" >
+                    <TextBox Name="tbName" FontSize="24"  Text="{Binding SelectedItem.Имя,
+                                 ElementName=dgPersonal}"></TextBox>
+                </Border>
+
+                <Label Name="lblMiddleName" Content="Отчество"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1" >
+                    <TextBox Name="tbMiddleName" FontSize="24" Text="{Binding SelectedItem.Отчество,
+                                 ElementName=dgPersonal}"></TextBox>
+                </Border>
+
+                <Label Name="lblEmail" Content="Элетронная почта"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1" >
+                    <TextBox Name="tbEmail" FontSize="24" Text="{Binding SelectedItem.Почта,
+                                 ElementName=dgPersonal}"></TextBox>
+                </Border>
+
+                <Label Name="lblPhoneNumber" Content="Номер телефона"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                  </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1">
+                    <TextBox Name="tbPhoneNumber" FontSize="24" Text="{Binding SelectedItem.Номер телефона,
+                                 ElementName=dgPersonal}" TextChanged="TbPhoneNumber_TextChanged" GotFocus="TbPhoneNumber_GotFocus"></TextBox>
+                </Border>
+
+                <Label Name="lblPosition" Content="Должность"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1">
+                    <ComboBox Name="CbPosition" FontSize="24" SelectedValue="{Binding SelectedItem.ID_Doljnosti, ElementName=dgPersonal}">
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                </Border>
+
+                <Label Name="lblLogin" Content="Логин"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1" >
+
+                    <TextBox Name="tbLogin" FontSize="24" Text="{Binding SelectedItem.Логин,
+                                 ElementName=dgPersonal}" GotFocus="TbLogin_GotFocus"></TextBox>
+                </Border>
+
+                <Label Name="lblPassword" Content="Пароль"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1">
+                    <TextBox Name="tbPassword" FontSize="24"></TextBox>
+                </Border>
+
+                <Label Name="lblPasswordConfirm" Content="Подтверждения пароля"  
+               FontSize="24" Foreground="White" FontFamily="Century Gothic">
+                </Label>
+                <Border BorderBrush="#6c43af" BorderThickness="1">
+                    <TextBox Name="tbPasswordConfirm" FontSize="24"></TextBox>
+                </Border>
+                <UniformGrid Rows="1" >
+                    <Button Name="btInsert" Content="Добавить" Foreground="#eeebf5" Background="#6c43af"  FontSize="25" FontFamily="Century Gothic" Click="BtInsert_Click"   ></Button>
+                    <Button Name="btUpdate" Content="Изменить" Foreground="#eeebf5" Background="#6c43af"  FontSize="25" FontFamily="Century Gothic" Click="BtUpdate_Click" ></Button>
+                    <Button Name="btDelete" Content="Удалить" Foreground="#eeebf5" Background="#6c43af"  FontSize="25" FontFamily="Century Gothic" Click="BtDelete_Click" ></Button>
+                </UniformGrid>
+            </UniformGrid>
+        </StackPanel>
+        <StackPanel  Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Border BorderBrush="#6c43af" BorderThickness="1" >
+                <TextBox Name="tbSearch" FontSize="30"></TextBox>
+            </Border>
+            <UniformGrid Rows="1">
+                <Button Name="btSearch" Content="Поиск" Foreground="#eeebf5" Background="#6c43af"  FontSize="30" FontFamily="Century Gothic" Click="BtSearch_Click"  ></Button>
+                <Button Name="btFilter" Content="Фильтр" Foreground="#eeebf5" Background="#6c43af"  FontSize="30" FontFamily="Century Gothic" Click="BtFilter_Click"></Button>
+                <Button Name="btCancel" Content="Отмена" Foreground="#eeebf5" Background="#6c43af"  FontSize="30" FontFamily="Century Gothic" Click="BtCancel_Click" ></Button>
+            </UniformGrid>
+        </StackPanel>
+
+        <Border BorderBrush="#6c43af" BorderThickness="1" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="14" >
+            <DataGrid Name="dgPersonal"  IsReadOnly="True" ColumnWidth="auto" FontSize="16"  AutoGeneratingColumn="DgPersonal_AutoGeneratingColumn"  ></DataGrid>
+        </Border>
+
+        <Button Name="Home" Background="#6c43af" BorderBrush="Transparent" Grid.Row="2" Grid.RowSpan="3" Grid.Column="8" Click="Home_Click" >
+            <Image Source="C:\KitchenBase\KitchenBase\Assets/home_icon.png"  Width="50" Height="50"/>
+        </Button>
+
+
+        <Button Name="btnRightMenuShow" Background="#6c43af" BorderBrush="Transparent" Grid.Row="5" Grid.RowSpan="3" Grid.Column="8"  Click="btnRightMenuShow_Click"  >
+            <Image Source="C:\KitchenBase\KitchenBase\Assets//settings_icon.png"  Width="50" Height="50">
+            </Image>
+        </Button>
+
+        <StackPanel Name="pnlRightMenu" Orientation="Horizontal"  HorizontalAlignment="Right" Grid.Row="5" Grid.Column="6" Grid.RowSpan="8" Grid.ColumnSpan="5" Margin ="0,-100,-170,0">
+            <Grid>
+                <Button Name="btnRightMenuHide" Background="#6c43af" BorderBrush="Transparent" Click="btnRightMenuHide_Click" Visibility="Hidden" Width="60">
+                    <Image Source="C:\KitchenBase\KitchenBase\Assets//settings_icon.png" Stretch="None">
+                    </Image>
+                </Button>
+
+            </Grid>
+            <StackPanel  Name="pnlRight" Width="170" Background="#6c43af" >
+                <Label Content="Цвет фона" FontFamily="Century Gothic" FontSize="20" Foreground="White"/>
+                <RadioButton GroupName="Backcolor" Content="Default" IsChecked="True" Checked="RadioButton_Checked" FontSize="20" Foreground="White" />
+                <RadioButton GroupName="Backcolor" Content="Синий" Checked="RadioButton1_Checked" FontSize="20" Foreground="White"/>
+                <RadioButton GroupName="Backcolor" Content="Серый" FontSize="20" Checked="RadioButton_Checked_1" Foreground="White"/>
+                <Label Content="Цвет кнопок" FontFamily="Century Gothic" FontSize="20" Foreground="White"/>
+                <RadioButton GroupName="ButtonColor" Content="Default" IsChecked="True" FontSize="20"  Checked="RadioButton_Checked_2" Foreground="White"/>
+                <RadioButton GroupName="ButtonColor" Content="Черный" FontSize="20" Checked="RadioButton_Checked_3" Foreground="White"/>
+                <RadioButton GroupName="ButtonColor" Content="Зеленый" FontSize="20" Checked="RadioButton_Checked_4" Foreground="White"/>
+                <Label Content="Фон поля" FontFamily="Century Gothic" FontSize="20" Foreground="White"/>
+                <RadioButton GroupName="Text" Content="Default" FontSize="20" IsChecked="True" Checked="RadioButton_Checked_5" Foreground="White"/>
+                <RadioButton GroupName="Text" Content="Прозрачный" FontSize="20" Checked="RadioButton_Checked_6" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
